@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RazorLightDemo.HtmlPDF;
 using RazorLightDemo.Lib;
 using RazorLightDemo.Lib.Models;
 
@@ -14,10 +15,12 @@ namespace RazorLightDemo.API.Controllers
         };
 
         private readonly ITemplateParser _parser;
+        private readonly IGeneratePDF _pdf;
 
-        public WeatherForecastController(ITemplateParser parser)
+        public WeatherForecastController(ITemplateParser parser, IGeneratePDF pdf)
         {
             _parser = parser;
+            _pdf = pdf;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -30,6 +33,8 @@ namespace RazorLightDemo.API.Controllers
             };
 
             string result = await _parser.ParseTemplateAsync(model);
+
+            _pdf.GeneratePDFFile(result);
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

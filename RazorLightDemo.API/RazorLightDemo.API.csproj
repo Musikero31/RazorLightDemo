@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RazorLightDemo.HtmlPDF\RazorLightDemo.HtmlPDF.csproj" />
     <ProjectReference Include="..\RazorLightDemo.Lib\RazorLightDemo.Lib.csproj" />
   </ItemGroup>
 

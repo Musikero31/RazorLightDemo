@@ -1,5 +1,6 @@
 using RazorLight;
 using RazorLight.Extensions;
+using RazorLightDemo.HtmlPDF;
 using RazorLightDemo.Lib;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddRazorLight(() => new RazorLightEngineBuilder().UseEmbeddedRe
                                                                   .Build());
 
 builder.Services.AddSingleton<ITemplateParser, TemplateParser>();
+builder.Services.AddScoped<IGeneratePDF, GeneratePDF>();
 
 var app = builder.Build();
 
