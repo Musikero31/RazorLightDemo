@@ -1,0 +1,6 @@
+@RazorLightDemo.API_HostAddress = http://localhost:5264
+
+GET {{RazorLightDemo.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
